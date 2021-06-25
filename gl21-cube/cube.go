@@ -50,7 +50,7 @@ func main() {
 		panic(err)
 	}
 
-	texture = newTexture("square.png")
+	texture = newTexture("pets.png")
 	defer gl.DeleteTextures(1, &texture)
 
 	setupScene()
