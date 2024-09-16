@@ -7,7 +7,7 @@ package main // import "github.com/go-gl/example/gl41core-cube"
 
 import (
 	"fmt"
-	"go/build"
+	// "go/build"
 	"image"
 	"image/draw"
 	_ "image/png"
@@ -319,24 +319,24 @@ var cubeVertices = []float32{
 }
 
 // Set the working directory to the root of Go package, so that its assets can be accessed.
-func init() {
-	dir, err := importPathToDir("github.com/go-gl/example/gl41core-cube")
-	if err != nil {
-		log.Fatalln("Unable to find Go package in your GOPATH, it's needed to load assets:", err)
-	}
-	err = os.Chdir(dir)
-	if err != nil {
-		log.Panicln("os.Chdir:", err)
-	}
-}
+// func init() {
+// 	dir, err := importPathToDir("github.com/go-gl/example/gl41core-cube")
+// 	if err != nil {
+// 		log.Fatalln("Unable to find Go package in your GOPATH, it's needed to load assets:", err)
+// 	}
+// 	err = os.Chdir(dir)
+// 	if err != nil {
+// 		log.Panicln("os.Chdir:", err)
+// 	}
+// }
 
 // importPathToDir resolves the absolute path from importPath.
 // There doesn't need to be a valid Go package inside that import path,
 // but the directory must exist.
-func importPathToDir(importPath string) (string, error) {
-	p, err := build.Import(importPath, "", build.FindOnly)
-	if err != nil {
-		return "", err
-	}
-	return p.Dir, nil
-}
+// func importPathToDir(importPath string) (string, error) {
+// 	p, err := build.Import(importPath, "", build.FindOnly)
+// 	if err != nil {
+// 		return "", err
+// 	}
+// 	return p.Dir, nil
+// }

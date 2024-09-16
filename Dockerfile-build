@@ -1,0 +1,17 @@
+FROM docker.io/ubuntu:20.04
+RUN useradd -g 0 -d /go-build -m go-build && \
+    chgrp -R 0 /go-build && \
+    chmod -R g=u /go-build
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && \
+    apt install -y wget gcc xorg libx11-dev libxcursor-dev libxrandr-dev \
+                   libxi-dev mesa-common-dev libglu1-mesa-dev libgl1-mesa-dev xorg-dev && \
+    wget https://golang.org/dl/go1.16.5.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.16.5.linux-amd64.tar.gz && \
+    rm go1.16.5.linux-amd64.tar.gz && \
+    apt autoremove && \
+    apt autoclean
+ENV PATH=$PATH:/usr/local/go/bin
+USER go-build
+WORKDIR /go-build
+CMD ["go", "build"]
